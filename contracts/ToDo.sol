@@ -14,7 +14,7 @@ contract ToDo {
   uint[] taskIds;
   mapping(uint => Task) tasks;
 
-  event TaskCreated(uint, uint, string, string, bool);
+  event TaskCreated(uint id, uint date, string content, string author, bool done);
 
   constructor() public {
     lastTaskId = 0;
@@ -27,6 +27,21 @@ contract ToDo {
     emit TaskCreated(lastTaskId, now, _content, _author, false);
   }
 
+  function getTaskIds() public view returns(uint[]) {
+    return taskIds;
+  }
+
+  function getTaskFixtures(uint _id) public view
+    returns(
+      uint,
+      uint,
+      string,
+      string,
+      bool
+     ) {
+    return (0, now, "Create more tutorials for ETB", "Julien", false); 
+  }
+
   function getTask(uint id) public view taskExists(id) 
     returns(
       uint,
@@ -35,7 +50,6 @@ contract ToDo {
       string,
       bool
     ) {
-    
     return(
       id,
       tasks[id].date,
@@ -43,10 +57,6 @@ contract ToDo {
       tasks[id].author,
       tasks[id].done
     );
-  }
-
-  function getTaskIds() public view returns(uint[]) {
-    return taskIds;
   }
 
   modifier taskExists(uint id) {
