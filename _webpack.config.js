@@ -6,10 +6,10 @@ const envVariables = new webpack.DefinePlugin({
 });
 
 module.exports = {
-  entry: './app/counter/main.js',
+  entry: './app/js/index.js',
   output: {
     filename: 'bundle.js',
-    path: path.resolve(__dirname, 'app/counter/dist')
+    path: path.resolve(__dirname, 'app/dist')
   },
   module: {
     rules: [

@@ -59,6 +59,26 @@ contract ToDo {
     );
   }
 
+  function getBalanceOfAddress(address _receiver) public view returns(uint256) {
+    return _receiver.balance;
+  }
+
+  function getBalanceOfSender() public view returns(uint){
+    return address(msg.sender).balance;  
+  }
+
+  function transfer(uint256 amount) public payable returns(bool) {
+    return address(msg.sender).send(amount);
+  }
+
+  function deposit(uint256 amount) public payable {
+    // nothing to do!
+  }
+
+  function getBalance() public view returns (uint256) {
+    return address(this).balance;
+  }
+
   modifier taskExists(uint id) {
     if (tasks[id].id == 0) {
       revert();

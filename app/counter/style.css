@@ -1,0 +1,10 @@
+#log {
+  background-color: #EEE;
+  padding: 10px;
+  margin: 10px;
+  font-size: .8rem;
+}
+
+#log p.dark-red {
+  color: red;
+}
